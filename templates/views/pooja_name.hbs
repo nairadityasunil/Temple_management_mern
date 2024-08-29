@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>By Devotee Name</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcnameslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../public/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body style="background-color: #E5E4E2;">
+    <!-- Component Top Navbar -->
+    {{>top_navbar}}
+    <div class="col-sm-12">
+        <div class="row">
+            {{>side_navbar}}
+            <div class="col-sm-10 px-0">
+                <div class="container-fluid px-3">
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <div class="card shadow-sm" style="margin-top : 10px; max-height:93vh;">
+                                <div class="card-body overflow-auto">
+                                    <h3 class="text-center">By Devotee Name</h3>
+                                    <br>
+                                    <form action="" method="POST">
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <center>
+                                                    <label for="name" class="col-form-label font-weight-bold">Devotee
+                                                        Name : </label>
+                                                </center>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="text" name="name" class="form-control bg-light" id="name"
+                                                    placeholder="" value="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <center>
+                                                    <label for="total_amount"
+                                                        class="col-form-label font-weight-bold">Birth Star : </label>
+                                                </center>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <select class="form-select bg-light" aria-label="Default select example"
+                                                    name="birth_star">
+                                                    <option value="Anizham">Anizham</option>
+                                                    <option value="Ashwathi">Ashwathi</option>
+                                                    <option value="Atham">Atham</option>
+                                                    <option value="Avittam">Avittam</option>
+                                                    <option value="Ayilyam">Ayilyam</option>
+                                                    <option value="Bharani">Bharani</option>
+                                                    <option value="Chathayam">Chathayam</option>
+                                                    <option value="Chithira">Chithira</option>
+                                                    <option value="Chothi">Chothi</option>
+                                                    <option value="Karthika">Karthika</option>
+                                                    <option value="Makam">Makam</option>
+                                                    <option value="Makayiram">Makayiram</option>
+                                                    <option value="Moolam">Moolam</option>
+                                                    <option value="Pooradam">Pooradam</option>
+                                                    <option value="Pooram">Pooram</option>
+                                                    <option value="Pooyam">Pooyam</option>
+                                                    <option value="Pooruruttathi">Pooruruttathi</option>
+                                                    <option value="Punartham">Punartham</option>
+                                                    <option value="Revathi">Revathi</option>
+                                                    <option value="Rohini">Rohini</option>
+                                                    <option value="Thiruvathira">Thiruvathira</option>
+                                                    <option value="Thiruvonam">Thiruvonam</option>
+                                                    <option value="Thrikketta">Thrikketta</option>
+                                                    <option value="Uthradam">Uthradam</option>
+                                                    <option value="Uthram">Uthram</option>
+                                                    <option value="Uthrattathi">Uthrattathi</option>
+                                                    <option value="Visakham">Visakham</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <center>
+                                                    <label for="name" class="col-form-label font-weight-bold">Pooja Date
+                                                        : </label>
+                                                </center>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="date" name="name" class="form-control bg-light" id="name"
+                                                    placeholder="" value="">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                            <div class="container">
+                                                <center>
+                                                    <table
+                                                        class="table table-striped  border-dark text-center w-75 px-2"
+                                                        id="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Vazhipadu</th>
+                                                                <!-- <th>Purpose</th> -->
+                                                                <th>Rate</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <td>
+                                                                <select name="inputs[0][entity_name]"
+                                                                    id="vazhipadu_select_0"
+                                                                    class="form-select vazhipadu-select">
+                                                                    <option value="-">Select Vazhipadu</option>
+                                                                    {{#each all_poojas}}
+                                                                    <option value="{{this.vazhipadu}}">
+                                                                        {{this.vazhipadu}}</option>
+                                                                    {{/each}}
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" name="inputs[0][amount]"
+                                                                    class="form-control table_input rate-input"
+                                                                    id="rate_0" placeholder="-" value="">
+                                                            </td>
+                                                            <td>
+                                                                <button type="button" name="split_btn"
+                                                                    class="btn btn-success"
+                                                                    id="split_btn">Split</button>
+                                                            </td>
+                                                        </tbody>
+                                                    </table>
+                                                </center>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="col-sm-12">
+                                            <center>
+                                                <button type="submit" class="btn btn-primary" id="submit_btn">Add
+                                                    Vazhipadu</button>
+                                                <button type="reset" class="btn btn-danger">Clear Form</button>
+                                            </center>
+                                        </div>
+                                    </form>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- component Side Navbar -->
+
+    <!-- Main Form -->
+</body>
+
+</html>
+<script>
+    $(document).ready(function () {
+        var i = 0;
+
+        $('#split_btn').click(function () {
+            ++i;
+            $('#table').append(
+                `<tr>
+                    <td>
+                        <select name="inputs[${i}][entity_name]" id="vazhipadu_select_${i}" class="form-select vazhipadu-select">
+                            <option value="-">Select Vazhipadu</option>
+                            {{#each all_poojas}}
+                                <option value="{{this.vazhipadu}}">{{this.vazhipadu}}</option>
+                            {{/each}}
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" name="inputs[${i}][amount]" class="form-control table_input rate-input" id="rate_${i}" placeholder="-" value="">
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger remove-row">Remove</button>
+                    </td>
+                </tr>`
+            );
+        });
+
+        $(document).on('click', '.remove-row', function () {
+            $(this).parents('tr').remove();
+        });
+
+        $(document).on('change', '.vazhipadu-select', function () {
+            var selectId = $(this).attr('id');
+            var index = selectId.split('_')[2]; // Extracting the index from the ID (e.g., 0 from vazhipadu_select_0)
+            var selectedVazhipadu = $(this).val();
+            var rateInput = $('#rate_' + index);
+
+            if (selectedVazhipadu !== '-') {
+                // AJAX request to get the rate
+                $.ajax({
+                    url: '/get-rate/' + encodeURIComponent(selectedVazhipadu), // Correct URL construction
+                    method: 'GET',
+                    success: function (data) {
+                        console.log('Success:', data); // Debugging log
+                        if (data.rate !== null) {
+                            rateInput.val(data.rate);
+                        } else {
+                            rateInput.val('');
+                            alert('Rate not found for selected Vazhipadu.');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error:', error); // Debugging log
+                        alert('Error fetching rate.');
+                    }
+                });
+            } else {
+                rateInput.val('');
+            }
+        });
+    });
+</script>
