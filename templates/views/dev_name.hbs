@@ -12,8 +12,6 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcnameslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../public/style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 </head>
 
 <body style="background-color: #E5E4E2;">
@@ -28,19 +26,20 @@
                         <div class="col-sm-7">
                             <div class="card shadow-sm" style="margin-top : 10px; max-height:93vh;">
                                 <div class="card-body overflow-auto">
-                                    <h3 class="text-center">By Devotee Name</h3>
+                                    <h3 class="text-center">Devotee Name</h3>
                                     <br>
-                                    <form action="" method="POST">
+                                    <form action="/pooja/add_dev_name" method="POST">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <center>
-                                                    <label for="name" class="col-form-label font-weight-bold">Devotee
+                                                    <label for="dev_name"
+                                                        class="col-form-label font-weight-bold">Devotee
                                                         Name : </label>
                                                 </center>
                                             </div>
                                             <div class="col-sm-6">
-                                                <input type="text" name="name" class="form-control bg-light" id="name"
-                                                    placeholder="" value="">
+                                                <input type="text" name="dev_name" class="form-control bg-light font-weight-bold"
+                                                    id="dev_name" placeholder="" value="">
                                             </div>
                                         </div>
 
@@ -52,8 +51,9 @@
                                                 </center>
                                             </div>
                                             <div class="col-sm-6">
-                                                <select class="form-select bg-light" aria-label="Default select example"
+                                                <select class="form-select bg-light font-weight-bold" aria-label="Default select example"
                                                     name="birth_star">
+                                                    <option value="-" disabled>Select Birth Start </option>
                                                     <option value="Anizham">Anizham</option>
                                                     <option value="Ashwathi">Ashwathi</option>
                                                     <option value="Atham">Atham</option>
@@ -87,26 +87,25 @@
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <center>
-                                                    <label for="name" class="col-form-label font-weight-bold">Pooja Date
+                                                    <label for="pooja_date"
+                                                        class="col-form-label font-weight-bold">Pooja Date
                                                         : </label>
                                                 </center>
                                             </div>
                                             <div class="col-sm-6">
-                                                <input type="date" name="name" class="form-control bg-light" id="name"
-                                                    placeholder="" value="">
+                                                <input type="date" name="pooja_date" class="form-control bg-light font-weight-bold"
+                                                    id="name" placeholder="" value="">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-12">
                                             <div class="container">
                                                 <center>
-                                                    <table
-                                                        class="table table-striped  border-dark text-center w-75 px-2"
+                                                    <table class="table table-striped border-dark text-center w-75 px-2"
                                                         id="table">
                                                         <thead>
                                                             <tr>
                                                                 <th>Vazhipadu</th>
-                                                                <!-- <th>Purpose</th> -->
                                                                 <th>Rate</th>
                                                                 <th>Action</th>
                                                             </tr>
@@ -115,7 +114,7 @@
                                                             <td>
                                                                 <select name="inputs[0][entity_name]"
                                                                     id="vazhipadu_select_0"
-                                                                    class="form-select vazhipadu-select">
+                                                                    class="form-select vazhipadu-select font-weight-bold">
                                                                     <option value="-">Select Vazhipadu</option>
                                                                     {{#each all_poojas}}
                                                                     <option value="{{this.vazhipadu}}">
@@ -125,13 +124,12 @@
                                                             </td>
                                                             <td>
                                                                 <input type="text" name="inputs[0][amount]"
-                                                                    class="form-control table_input rate-input"
+                                                                    class="form-control font-weight-bold table_input rate-input"
                                                                     id="rate_0" placeholder="-" value="">
                                                             </td>
                                                             <td>
                                                                 <button type="button" name="split_btn"
-                                                                    class="btn btn-success"
-                                                                    id="split_btn">Split</button>
+                                                                    class="btn btn-success font-weight-bold" id="split_btn">Add</button>
                                                             </td>
                                                         </tbody>
                                                     </table>
@@ -141,13 +139,43 @@
                                         <br>
                                         <div class="col-sm-12">
                                             <center>
-                                                <button type="submit" class="btn btn-primary" id="submit_btn">Add
+                                                <button type="submit" class="btn btn-dark font-weight-bold" id="submit_btn">Add
                                                     Vazhipadu</button>
-                                                <button type="reset" class="btn btn-danger">Clear Form</button>
+                                                <button type="reset" class="btn btn-primary font-weight-bold">Clear Form</button>
                                             </center>
                                         </div>
                                     </form>
                                     <br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="card" style="margin-top : 10px;">
+                                <div class="card-body">
+                                    <div class="container">
+                                        <h4 class="text-center">Today's Entries</h4>
+                                        <hr style="background-color: black;">
+                                    </div>
+                                    <table class="table table-bordered border-dark text-center font-weight-bold">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>Sr No.</th>
+                                                <th>Vazhipadu</th>
+                                                <th>Devotee</th>
+                                                <th>Star</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{#each records_today}}
+                                                <tr>
+                                                    <td>{{increment @index}}</td>
+                                                    <td>{{this.vazhipadu_name}}</td>
+                                                    <td>{{this.devotee_name}}</td>
+                                                    <td>{{this.birth_star}}</td>
+                                                </tr>
+                                            {{/each}}
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -163,6 +191,8 @@
 </body>
 
 </html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
         var i = 0;
@@ -171,21 +201,21 @@
             ++i;
             $('#table').append(
                 `<tr>
-                    <td>
-                        <select name="inputs[${i}][entity_name]" id="vazhipadu_select_${i}" class="form-select vazhipadu-select">
-                            <option value="-">Select Vazhipadu</option>
-                            {{#each all_poojas}}
-                                <option value="{{this.vazhipadu}}">{{this.vazhipadu}}</option>
-                            {{/each}}
-                        </select>
-                    </td>
-                    <td>
-                        <input type="text" name="inputs[${i}][amount]" class="form-control table_input rate-input" id="rate_${i}" placeholder="-" value="">
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-danger remove-row">Remove</button>
-                    </td>
-                </tr>`
+            <td>
+                <select name="inputs[${i}][entity_name]" id="vazhipadu_select_${i}" class="form-select vazhipadu-select">
+                    <option value="-">Select Vazhipadu</option>
+                    {{#each all_poojas}}
+                        <option value="{{this.vazhipadu}}">{{this.vazhipadu}}</option>
+                    {{/each}}
+                </select>
+            </td>
+            <td>
+                <input type="text" name="inputs[${i}][amount]" class="form-control table_input rate-input" id="rate_${i}" placeholder="-" value="">
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger font-weight-bold remove-row">Remove</button>
+            </td>
+            </tr>`
             );
         });
 
@@ -202,7 +232,7 @@
             if (selectedVazhipadu !== '-') {
                 // AJAX request to get the rate
                 $.ajax({
-                    url: '/get-rate/' + encodeURIComponent(selectedVazhipadu), // Correct URL construction
+                    url: '/pooja/get-rate/' + encodeURIComponent(selectedVazhipadu), // Ensure this matches the route
                     method: 'GET',
                     success: function (data) {
                         console.log('Success:', data); // Debugging log
@@ -218,6 +248,7 @@
                         alert('Error fetching rate.');
                     }
                 });
+
             } else {
                 rateInput.val('');
             }
