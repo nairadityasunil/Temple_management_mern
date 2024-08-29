@@ -145,36 +145,45 @@
 
 <script>
     $(document).ready(function () {
-        var pooja_count = 0;
-        var donation_count = 0;
+        let pooja_count = 0;
+        let donation_count = 0;
 
         $('#pooja_toggle').click(function () {
-            if (pooja_count === 0) {
+            if (pooja_count == 0) {
                 $('#pooja_toggle').addClass("navbar-hover_active");
                 $('#donation_toggle').removeClass("navbar-hover_active");
-                $('#donation_menu').hide(); // Hide donation menu immediately
-                $('#pooja_menu').slideToggle(1); // Slide toggle pooja menu with faster animation (200ms)
+                $('#donation_menu').hide(); 
+                $('#pooja_menu').show(); 
+                $('#pooja_menu').slideToggle(1); 
                 pooja_count = 1;
                 donation_count = 0;
             } else {
                 $('#pooja_toggle').removeClass("navbar-hover_active");
-                $('#pooja_menu').slideUp(1); // Slide up pooja menu with faster animation (200ms)
+                $('#pooja_menu').slideUp(100); 
+                $('#pooja_menu').hide(); 
+
                 pooja_count = 0;
+                donation_count = 0;
+
             }
         });
 
         $('#donation_toggle').click(function () {
-            if (donation_count === 0) {
+            if (donation_count == 0) {
                 $('#donation_toggle').addClass("navbar-hover_active");
                 $('#pooja_toggle').removeClass("navbar-hover_active");
-                $('#pooja_menu').hide(); // Hide pooja menu immediately
-                $('#donation_menu').slideToggle(1); // Slide toggle donation menu with faster animation (200ms)
+                $('#donation_menu').show(); 
+                $('#pooja_menu').hide(); 
+                $('#donation_menu').slideToggle(1); 
                 donation_count = 1;
                 pooja_count = 0;
             } else {
+                $('#donation_menu').slideUp(100); 
                 $('#donation_toggle').removeClass("navbar-hover_active");
-                $('#donation_menu').slideUp(1); // Slide up donation menu with faster animation (200ms)
+                $('#donation_menu').hide(); 
                 donation_count = 0;
+                pooja_count = 0;
+
             }
         });
     });
