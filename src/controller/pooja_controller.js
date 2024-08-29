@@ -7,7 +7,7 @@ const vazhipadu_record = require('../models/vazhipadu_model');
 
 const by_devotee_name = async (req, res) => {
     try {
-        const all_poojas = await available_vazhipadu.find();
+        const all_poojas = await available_vazhipadu.find().sort({vazhipadu : 1});
 
         // Define start and end of the current day
         const startOfDay = moment().startOf('day').toDate(); // Converts to Date object
@@ -20,7 +20,6 @@ const by_devotee_name = async (req, res) => {
 
         res.render('dev_name', { all_poojas, records_today });
     } catch (error) {
-        console.error('Error retrieving today\'s records:', error);
         res.status(500).send('Internal Server Error');
     }
 };
@@ -65,14 +64,51 @@ const add_dev_name = async (req, res) => {
 
         res.send("<script>alert('Vazhipadu Recorded Successfully !!!');window.location.href = '/pooja/by_devotee'; </script>");
     } catch (error) {
-        console.error('Error adding pooja:', error);
         res.status(500).send('Internal Server Error');
     }
 };
 
+const all_vazhipadu = async (req,res) => {
+    try {
+        const available = await available_vazhipadu.find().sort({vazhipadu : 1});
+        res.render("available_pooja", {available});
+    } catch (error) {
+        res.status(500).send('Internal Server Error');
+    }
+};
+
+const new_vazhipadu = async (req,res) => {
+    try {
+        const add_new = new available_vazhipadu({
+            vazhipadu : req.body.vazhipadu_name,
+            rate : req.body.rate
+        });
+
+        if (await add_new.save())
+        {
+            res.send("<script>alert('New Vazhipadu Saved Successfully !!!');window.location.href = '/pooja/all_vazhipadu'; </script>");
+        }
+    } catch (error) {
+        res.status(500).send('Internal Server Error');
+    }
+};
+
+const all_records = async (req,res) => {
+    try {
+        const records = await vazhipadu_record.find();
+        res.render('all_records', {records});
+        
+    } catch (error) {
+        console.log(error)
+        res.status(500).send('Internal Server Error');
+    }
+};
 
 module.exports = {
     by_devotee_name,
     vazhipadu_rate,
-    add_dev_name
+    add_dev_name,
+    all_vazhipadu,
+    new_vazhipadu,
+    all_records
 };

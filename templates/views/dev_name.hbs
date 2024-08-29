@@ -27,7 +27,11 @@
                             <div class="card shadow-sm" style="margin-top : 10px; max-height:93vh;">
                                 <div class="card-body overflow-auto">
                                     <h3 class="text-center">Devotee Name</h3>
+                                    <center>
+                                        <hr style="background-color: black; width:85%">
+                                    </center>
                                     <br>
+                                    
                                     <form action="/pooja/add_dev_name" method="POST">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
@@ -47,13 +51,14 @@
                                             <div class="col-sm-4">
                                                 <center>
                                                     <label for="total_amount"
-                                                        class="col-form-label font-weight-bold">Birth Star : </label>
+                                                        class="col-form-label font-weight-bold">Nakshatram : </label>
                                                 </center>
                                             </div>
                                             <div class="col-sm-6">
                                                 <select class="form-select bg-light font-weight-bold" aria-label="Default select example"
                                                     name="birth_star">
                                                     <option value="-" disabled>Select Birth Start </option>
+                                                    <option value="-">-  </option>
                                                     <option value="Anizham">Anizham</option>
                                                     <option value="Ashwathi">Ashwathi</option>
                                                     <option value="Atham">Atham</option>
@@ -111,7 +116,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <td>
+                                                            <td style="width: 50%;">
                                                                 <select name="inputs[0][entity_name]"
                                                                     id="vazhipadu_select_0"
                                                                     class="form-select vazhipadu-select font-weight-bold">
@@ -122,7 +127,7 @@
                                                                     {{/each}}
                                                                 </select>
                                                             </td>
-                                                            <td>
+                                                            <td style="width: 28%;">
                                                                 <input type="text" name="inputs[0][amount]"
                                                                     class="form-control font-weight-bold table_input rate-input"
                                                                     id="rate_0" placeholder="-" value="">
@@ -162,7 +167,7 @@
                                                 <th>Sr No.</th>
                                                 <th>Vazhipadu</th>
                                                 <th>Devotee</th>
-                                                <th>Star</th>
+                                                <th>Nakshatram</th>
                                             </tr>
                                         </thead>
                                         <tbody>

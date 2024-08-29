@@ -28,23 +28,6 @@ hbs.registerHelper('increment', function(index) {
 const pooja_route = require('./routes/pooja_routes');
 app.use('/pooja',pooja_route);
 
-
-// app.get('/get-rate/:vazhipadu1', async (req, res) => {
-//     console.log("Rate");
-//     const vazhipadu1 = req.params.vazhipadu1;
-//     try {
-//         const pooja = await available_vazhipadu.findOne({ vazhipadu: vazhipadu1 });
-//         if (pooja) {
-//             res.json({ rate: pooja.rate });
-//         } else {
-//             res.json({ rate: null });
-//         }
-//     } catch (error) {
-//         res.status(500).json({ error: 'Internal server error' });
-//     }
-// });
-
-
 app.listen(port,()=>{
     console.log("Temple Management System Server running at port : "+port);
 });
