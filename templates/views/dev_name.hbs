@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../public/style.css">
 </head>
 
-<body style="background-color: #E5E4E2;">
+<body style="background-color: #E5E4E2; overflow-y:hidden;">
     <!-- Component Top Navbar -->
     {{>top_navbar}}
     <div class="col-sm-12">
@@ -31,7 +31,7 @@
                                         <hr style="background-color: black; width:85%">
                                     </center>
                                     <br>
-                                    
+
                                     <form action="/pooja/add_dev_name" method="POST">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
@@ -42,8 +42,9 @@
                                                 </center>
                                             </div>
                                             <div class="col-sm-6">
-                                                <input type="text" name="dev_name" class="form-control bg-light font-weight-bold"
-                                                    id="dev_name" placeholder="" value="">
+                                                <input type="text" name="dev_name"
+                                                    class="form-control bg-light font-weight-bold" id="dev_name"
+                                                    placeholder="" value="">
                                             </div>
                                         </div>
 
@@ -55,10 +56,10 @@
                                                 </center>
                                             </div>
                                             <div class="col-sm-6">
-                                                <select class="form-select bg-light font-weight-bold" aria-label="Default select example"
-                                                    name="birth_star">
+                                                <select class="form-select bg-light font-weight-bold"
+                                                    aria-label="Default select example" name="birth_star">
                                                     <option value="-" disabled>Select Birth Start </option>
-                                                    <option value="-">-  </option>
+                                                    <option value="-">- </option>
                                                     <option value="Anizham">Anizham</option>
                                                     <option value="Ashwathi">Ashwathi</option>
                                                     <option value="Atham">Atham</option>
@@ -98,15 +99,16 @@
                                                 </center>
                                             </div>
                                             <div class="col-sm-6">
-                                                <input type="date" name="pooja_date" class="form-control bg-light font-weight-bold"
-                                                    id="name" placeholder="" value="">
+                                                <input type="date" name="pooja_date"
+                                                    class="form-control bg-light font-weight-bold" id="name"
+                                                    placeholder="" value="">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-12">
                                             <div class="container">
                                                 <center>
-                                                    <table class="table table-striped border-dark text-center w-75 px-2"
+                                                    <table class="table table-striped bg-light text-center w-75 px-2"
                                                         id="table">
                                                         <thead>
                                                             <tr>
@@ -119,7 +121,7 @@
                                                             <td style="width: 50%;">
                                                                 <select name="inputs[0][entity_name]"
                                                                     id="vazhipadu_select_0"
-                                                                    class="form-select vazhipadu-select font-weight-bold">
+                                                                    class="form-select text-center vazhipadu-select font-weight-bold">
                                                                     <option value="-">Select Vazhipadu</option>
                                                                     {{#each all_poojas}}
                                                                     <option value="{{this.vazhipadu}}">
@@ -129,12 +131,13 @@
                                                             </td>
                                                             <td style="width: 28%;">
                                                                 <input type="text" name="inputs[0][amount]"
-                                                                    class="form-control font-weight-bold table_input rate-input"
-                                                                    id="rate_0" placeholder="-" value="">
+                                                                    class="form-control font-weight-bold table_input rate-input text-center"
+                                                                    id="rate_0" placeholder="" value="" readonly>
                                                             </td>
                                                             <td>
                                                                 <button type="button" name="split_btn"
-                                                                    class="btn btn-success font-weight-bold" id="split_btn">Add</button>
+                                                                    class="btn btn-success font-weight-bold"
+                                                                    id="split_btn">Add</button>
                                                             </td>
                                                         </tbody>
                                                     </table>
@@ -144,9 +147,11 @@
                                         <br>
                                         <div class="col-sm-12">
                                             <center>
-                                                <button type="submit" class="btn btn-dark font-weight-bold" id="submit_btn">Add
+                                                <button type="submit" class="btn btn-dark font-weight-bold"
+                                                    id="submit_btn">Add
                                                     Vazhipadu</button>
-                                                <button type="reset" class="btn btn-primary font-weight-bold">Clear Form</button>
+                                                <button type="reset" class="btn btn-warning font-weight-bold">Clear
+                                                    Form</button>
                                             </center>
                                         </div>
                                     </form>
@@ -158,7 +163,10 @@
                             <div class="card" style="margin-top : 10px;">
                                 <div class="card-body">
                                     <div class="container">
-                                        <h4 class="text-center">Today's Entries</h4>
+                                        <h4 class="text-center">Today's Vazhipadu</h4>
+                                        <hr style="background-color: black;">
+
+                                        <h5 style="color: green;">Collection : {{total}}</h5>
                                         <hr style="background-color: black;">
                                     </div>
                                     <table class="table table-bordered border-dark text-center font-weight-bold">
@@ -172,12 +180,12 @@
                                         </thead>
                                         <tbody>
                                             {{#each records_today}}
-                                                <tr>
-                                                    <td>{{increment @index}}</td>
-                                                    <td>{{this.vazhipadu_name}}</td>
-                                                    <td>{{this.devotee_name}}</td>
-                                                    <td>{{this.birth_star}}</td>
-                                                </tr>
+                                            <tr>
+                                                <td>{{increment @index}}</td>
+                                                <td>{{this.vazhipadu_name}}</td>
+                                                <td>{{this.devotee_name}}</td>
+                                                <td>{{this.birth_star}}</td>
+                                            </tr>
                                             {{/each}}
                                         </tbody>
                                     </table>
@@ -200,6 +208,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
+        $('#dev_name').addClass('navbar-hover_active');
         var i = 0;
 
         $('#split_btn').click(function () {
@@ -207,7 +216,7 @@
             $('#table').append(
                 `<tr>
             <td>
-                <select name="inputs[${i}][entity_name]" id="vazhipadu_select_${i}" class="form-select vazhipadu-select">
+                <select name="inputs[${i}][entity_name]" id="vazhipadu_select_${i}" class="form-select vazhipadu-select text-center font-weight-bold">
                     <option value="-">Select Vazhipadu</option>
                     {{#each all_poojas}}
                         <option value="{{this.vazhipadu}}">{{this.vazhipadu}}</option>
@@ -215,7 +224,7 @@
                 </select>
             </td>
             <td>
-                <input type="text" name="inputs[${i}][amount]" class="form-control table_input rate-input" id="rate_${i}" placeholder="-" value="">
+                <input type="text" name="inputs[${i}][amount]" class="form-control table_input rate-input  text-center font-weight-bold" id="rate_${i}" placeholder="-" value="">
             </td>
             <td>
                 <button type="button" class="btn btn-danger font-weight-bold remove-row">Remove</button>

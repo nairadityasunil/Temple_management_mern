@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../public/style.css">
 </head>
 
-<body style="background-color: #E5E4E2;">
+<body style="background-color: #E5E4E2; max-height:100vh; overflow-y:hidden" >
     <!-- Component Top Navbar -->
     {{>top_navbar}}
     <div class="col-sm-12">
@@ -25,7 +25,7 @@
 
                     <div class="card shadow-2-strong shadow-sm card-registration w-100" style="margin-top : 10px">
                         <div class="card-body p-4 p-md-5">
-                            <div class="w-100 d-flex justify-content-center mb-4 col-sm-12">
+                            <div class="w-100 d-flex justify-content-center mb-4 col-sm-12" style="border-bottom:1px solid black;">
                                 <div class="row w-100">
                                     <div class="col-sm-8">
                                         <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">All Vazhipadu Entries</h3>                    
@@ -38,18 +38,19 @@
 
                             </div>
 
-                            <div class="w-100 d-flex justify-content-center">
-                                <table class="table table-bordered border-dark text-center" id="poojaTable">
-                                    <thead class="thead-dark">
+                            <div class="w-100 d-flex justify-content-center"   style="overflow-y: scroll; max-height:72vh">
+                                <table class="table table-bordered border-dark text-center"  id="poojaTable">
+                                    <thead class="thead-dark"  style="position: sticky;top: 0">
                                         <tr>
                                             <th>Sr No.</th>
                                             <th>Devotee</th>
                                             <th>Nakshatram</th>
                                             <th>Pooja Date</th>
-                                            <th>Created At</th>
-                                            <th>Updated At</th>
+                                            <th>Created On</th>
+                                            <th>Updated On</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
+                                            <th>Receipt</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -59,12 +60,14 @@
                                             <td>{{this.devotee_name}}</td>
                                             <td>{{this.birth_star}}</td>
                                             <td>{{this.pooja_date}}</td>
-                                            <td>{{this.created_at}}</td>
-                                            <td>{{this.updated_at}}</td>
-                                            <td><a href="/pooja/update/{{this._id}}"
-                                                    class="btn btn-warning btn-sm font-weight-bold">Update</a></td>
-                                            <td><a href="/pooja/delete/{{this._id}}"
-                                                    class="btn btn-danger btn-sm font-weight-bold">Delete</a></td>
+                                            <td>{{this.formattedDate}}</td>
+                                            <td>{{this.formattedupdate}}</td> 
+                                            <td><a href="/pooja/update_record/{{this._id}}"
+                                                    class="btn btn-warning btn-sm font-weight-bold" style="width: fit-content;">Update</a></td>
+                                            <td><a href="/pooja/delete_record/{{this._id}}"
+                                                    class="btn btn-danger btn-sm font-weight-bold" style="width: fit-content;">Delete</a></td>
+                                            <td><a href="/pooja/print_record/{{this._id}}"
+                                                    class="btn btn-primary btn-sm font-weight-bold" style="width: fit-content;">Print</a></td>
                                         </tr>
                                         {{/each}}
                                     </tbody>
@@ -110,3 +113,8 @@
 </body>
 
 </html>
+<script>
+    $(document).ready(function (){
+        $('#all_records').addClass('navbar-hover_active');
+    });
+</script>

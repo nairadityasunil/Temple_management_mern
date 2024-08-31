@@ -84,11 +84,21 @@
 </style>
 <div class="col-sm-2 side_navbar">
     <div>
-        <a href="" class="btn btn-link navbar-hover"
-            style="color : black; text-decoration:none; text-align:justify">Home</a>
+        <a href="/pooja/by_devotee" class="btn btn-link navbar-hover"
+            style="color : black; text-decoration:none; text-align:justify" id="dev_name">Devotee Name</a>
         <br>
     </div>
     <div>
+        <a href="/pooja/by_vazhipadu" class="btn btn-link navbar-hover"
+            style="color : black; text-decoration:none; text-align:justify" id="pooja_name">Vazhipadu Name</a>
+        <br>
+    </div>
+    <div>
+        <a href="/pooja/all_records" class="btn btn-link navbar-hover"
+            style="color : black; text-decoration:none; text-align:justify" id="all_records">All Records</a>
+        <br>
+    </div>
+    {{!-- <div>
         <a href="" class="btn btn-link navbar-hover py-2" id="pooja_toggle" data-toggle="collapse"
             data-target="#pooja_menu" aria-expanded="false" aria-controls="pooja_menu"
             style="color : black; text-decoration:none; text-align:justify">Vazhipadu <svg
@@ -103,7 +113,7 @@
                     style="color : white; text-decoration:none; text-align:justify" >Devotee Name</a>
             </div>
             <div class="menu-item">
-                <a href="" class="a-hover btn btn-link navbar-hover"
+                <a href="/pooja/by_vazhipadu" class="a-hover btn btn-link navbar-hover"
                     style="color : white; text-decoration:none; text-align:justify">Vazhipadu Name</a>
             </div>
             <div class="menu-item">
@@ -112,34 +122,16 @@
             </div>
         </div>
         <!-- <br> -->
-    </div>
+    </div> --}}
     <div>
-        <a href="" class="btn btn-link navbar-hover py-2" id="donation_toggle" data-toggle="collapse"
-            data-target="#donation_menu" aria-expanded="false" aria-controls="donation_menu"
-            style="color : black; text-decoration:none; text-align:justify">Donation <svg
-                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-                <path
-                    d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-            </svg></i></a>
-        <div class="collapse items-menu mx-2" id="donation_menu" style="border-radius : 0px 0px 10px 10px;">
-            <div class="menu-item">
-                <a href="" class="a-hover btn btn-link navbar-hover"
-                    style="color : white; text-decoration:none; text-align:justify">New Donation</a>
-            </div>
-            <div class="menu-item">
-                <a href="" class="a-hover btn btn-link navbar-hover"
-                    style="color : white; text-decoration:none; text-align:justify">All Donations</a>
-            </div>
-        </div>
         <div>
             <a href="/pooja/all_vazhipadu" class="btn btn-link navbar-hover"
-                style="color : black; text-decoration:none; text-align:justify">Vazhipadu Available</a>
+                style="color : black; text-decoration:none; text-align:justify" id="all_pooja">Vazhipadu Available</a>
             <br>
         </div>
         <div>
-        <a href="" class="btn btn-link navbar-hover"
-            style="color : black; text-decoration:none; text-align:justify">User Details</a>
+        <a href="/user/user_master" class="btn btn-link navbar-hover"
+            style="color : black; text-decoration:none; text-align:justify" id="user_master">User Master</a>
         <br>
     </div>
         <!-- <br> -->
